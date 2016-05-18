@@ -1,15 +1,15 @@
-module.exports ={
-	entry: [
-      './src/App.js'
-	],
-	outpout:{
-		path: __dirname,
-		filename: 'app.js'
-	},
-	module:{
-		loader: [{
-			test: /\.jsx?$/,
-			loader: 'babel'
-		}]
-	}
+module.exports = {
+  entry: [
+    './src/App.js'
+  ],
+  output: {
+    filename: 'app.js'
+  },
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel'
+    }]
+  }
 };
