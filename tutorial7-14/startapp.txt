@@ -1,1 +1,2 @@
+ On ubuntu type the following command on your terminal
  sudo node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 1894

@@ -5,24 +5,31 @@ class ContactsList extends React.Component {
 	constructor(){
 		super();
 	  this.state = {
-	  	search: "Level Up"
+	  	search: ""
 	  };
 	}
 	updateSearch(event){
 		this.setState({search: event.target.value.substr(0,15)});
 	}
   render(){
+  	let filteredContacts = this.props.contacts.filter(
+        (contact)=> {
+        	return contact.name.toLowerCase().indexOf(
+				        		this.state.search.toLowerCase()
+				        		) !== -1;
+        }
+  		);
   	return (
   		<div>
-	  		<ul>
-	  		  { this.props.contacts.map((contact)=> {
-	  		  	return <Contact contact={contact} key={contact.id}/>
-	  		  })}
-	  		</ul>
 	  		<input type="text" 
 	  			value={this.state.search} 
 	  			onChange={this.updateSearch.bind(this)}
 	  		/>
+	  		<ul>
+	  		  { filteredContacts.map((contact)=> {
+	  		  	return <Contact contact={contact} key={contact.id}/>
+	  		  })}
+	  		</ul>
   		</div>
   		)
   }
